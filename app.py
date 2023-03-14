@@ -5,7 +5,7 @@ from flask import Flask, url_for, request, render_template, redirect, flash
 
 app = Flask(__name__)
 
-'Standart html Flask vorlage'
+# Standart html Flask vorlage
 
 
 @app.route('/')
