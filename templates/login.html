@@ -1,25 +1,25 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Login Page</title>
+{% extends "base.html" %}
+{% block head %}{% endblock %}
+{% block title %}Login{% endblock %}
 
-</head>
-<body>
-<form action="{{ url_for('login_site') }}" method="POST">
-    {% if error %}
-      <p style="color:darkred">
-        {{ error }}
-      </p>
-    {% endif %}
-    <p>
-        <label for="username">Username</label>
-        <input type="text" name="username" id="username">
-    </p>
-    <p>
-        <label for="password">Password</label>
-        <input type="password" name="password" id="password">
-    </p>
-    <button type="submit">Login</button>
-</body>
-</html>
+
+{% block content %}
+    <div class="container">
+            <form action="{{ url_for('login_site') }}" method="POST">
+                {% if error %}
+                  <p style="color:darkred">
+                    {{ error }}
+                  </p>
+                {% endif %}
+                <p>
+                    <label for="username">Username</label>
+                    <input type="text" name="username" id="username">
+                </p>
+                <p>
+                    <label for="password">Password</label>
+                    <input type="password" name="password" id="password">
+                </p>
+                <button type="submit">Login</button>
+            </form>
+        </div>
+{% endblock %}
