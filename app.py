@@ -9,7 +9,6 @@ from flask import (Flask,
                    render_template,
                    redirect,
                    flash,
-                   make_response,
                    session
                    )
 
@@ -37,7 +36,6 @@ def login_site():
 
 @app.route('/logout')
 def logout():
-
     session.pop('username', None)
 
     return redirect(url_for('login_site'))
@@ -60,45 +58,6 @@ def welcome():
     else:
         return redirect(url_for('login_site'))
 
-# ----------------------------------------------------------------
-#
-# def hello():
-#   return render_template('hello.html')
-
-
-# Standart Flask Vorlagen
-'''
-@app.route('/')
-def index():
-    return 'Leere Seite'
-
-
-@app.route('/username/<username>')
-def show_user_profile(username):
-    # show the user profile
-    return 'User %s' % username
-
-
-@app.route('/post/<int:post_id>')
-def show_post(post_id):
-    # show the post
-    return 'Post %d' % post_id
-
-
-@app.route('/login', methods=['GET', 'POST'])
-def login_site():
-    if request.method == 'POST':
-        return 'username is: ' + request.values["username"]
-    else:
-        return '<form action="/login" method="post"><input type=t"ext" name="username"/><p><button type="submit">Submit</button>'
-
-
-
-@app.route('/hello_time')
-def hello_world():  # put application's code here
-    time = datetime.datetime.now().strftime("%d.%m.%Y %H:%M:%S")
-    return '<h1>' + 'Hello World! it is: ' + time + '</h1> </br>'
-'''
 
 if __name__ == '__main__':
     host = os.environ.get('HOST', '0.0.0.0')
@@ -106,7 +65,7 @@ if __name__ == '__main__':
     app.debug = True
     app.secret_key = os.urandom(24)
     # logging
-    handler = RotatingFileHandler('site.log', maxBytes=10240, backupCount=1)
+    handler = RotatingFileHandler('error.log', maxBytes=10240, backupCount=1)
     handler.setLevel(logging.WARNING)
     app.logger.addHandler(handler)
     app.run(host=host, port=port)

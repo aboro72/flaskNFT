@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    {% block head %}
+    <title>{% block title %}{% endblock %} - NFTshop</title>
+    {% endblock %}
+</head>
+<body>
+<div id="logo">
+    <img src="{{ url_for('static', filename='img/logo.png') }}" alt="Logo">
+</div>
+{% with massages = get_flashed_messages() %}
+    {% if massages %}
+        {% for massages in massages %}
+        <li>{{ massages }}</li>
+        {% endfor %}
+
+    {% endif %}
+{% endwith %}
+<div id="content">
+    {% block content %}
+    {% endblock %}
+</div>
+<div class="footer">(c) 2023 A.Borowczak</div>
+</body>
+</html>
