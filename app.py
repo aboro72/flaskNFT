@@ -31,7 +31,7 @@ def login_site():
             error = "Invalid username or password"
             app.logger.warning('incorrect username or password for user (%s)',
                                request.form.get("username"))
-    return render_template('login.html', error=error)
+    return render_template('home/login.html', error=error)
 
 
 @app.route('/logout')
@@ -54,7 +54,7 @@ def welcome():
 
     if 'username' in session:
         app.logger.info('user (%s) logged in ' + time, session['username'])
-        return render_template('welcome.html', username=session['username'], time=time)
+        return render_template('home/welcome.html', username=session['username'], time=time)
     else:
         return redirect(url_for('login_site'))
 
