@@ -19,10 +19,15 @@ def create_app():
     # Initialize blueprint
     from home.views import home_bp
     app.register_blueprint(home_bp)
-
+    from block.views import block_bp
+    app.register_blueprint(block_bp, url_prefix='/block')
+    from author.views import author_bp
+    app.register_blueprint(author_bp, url_prefix='/author')
     # Initialize SQLAlchemy for each blueprint
     # example:
     # from home.models import db as home_db
     # home_db.init_app(home_bp)
+    from author.models import db as author_db
+    author_db.init_app(author_bp)
 
     return app
